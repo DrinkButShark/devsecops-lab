@@ -14,4 +14,4 @@ jobs:
         run: |
           echo "DevSecOps Pipeline Running"
           docker --version
-``
+
