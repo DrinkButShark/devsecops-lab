@@ -9,8 +9,8 @@ def home():
 
 @app.route("/cmd")
 def cmd():
-    user_input = "ls"
-    subprocess.run(user_input, shell=True)
+    subprocess.run(["ls"])
     return "executed"
 
-app.run(host="0.0.0.0", port=5000)
+if __name__ == "__main__":
+    app.run()
