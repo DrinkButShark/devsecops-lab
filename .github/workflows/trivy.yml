@@ -11,11 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run Trivy Filesystem Scan
+      - name: Scan Repository
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: fs
           scan-ref: .
-          format: table
           severity: CRITICAL,HIGH
-
