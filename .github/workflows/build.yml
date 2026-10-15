@@ -32,4 +32,4 @@ jobs:
         with:
           context: ./app
           push: true
-          tags: ghcr.io/${{ github.repository }}:latest
+          tags: ghcr.io/drinkbutshark/devsecops-lab:latest
