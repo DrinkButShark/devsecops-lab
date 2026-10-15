@@ -1,0 +1,28 @@
+name: Sign Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sign:
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+
+    steps:
+      - uses: sigstore/cosign-installer@v3
+
+      - name: Sign Container
+        env:
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+        run: |
+          echo "$COSIGN_PRIVATE_KEY" > cosign.key
+
+          cosign sign \
+            --yes \
+            --key cosign.key \
+            ghcr.io/drinkbutshark/devsecops-lab:latest
